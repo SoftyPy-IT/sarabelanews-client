@@ -4,7 +4,7 @@ import Image from "next/image";
 import DateAndTime from "@/lib/dateAndTime";
 import Link from "next/link";
 import banner from "@public/asset/banner.jpg";
-import logo from '../../../public/asset/logo/logo2.png'
+import logo from '../../../public/asset/logo/logo2.svg'
 
 const topNews = [
   {
@@ -43,7 +43,7 @@ const Header = () => {
             <Image
               src={logo}
               alt="daily times 24"
-    
+
             />
           </Link>
           {/* <div>
