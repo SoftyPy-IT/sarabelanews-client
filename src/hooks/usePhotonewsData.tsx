@@ -1,11 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
-
-
 import { TPhotoNews } from "@/types";
 import { photoNewsFields } from "@/util/fields";
 import { useEffect, useState } from "react";
-
 
 export const usePhotonewsData = () => {
     const [photoNewsData, setPhotoNewsData] = useState<TPhotoNews[]>([]);

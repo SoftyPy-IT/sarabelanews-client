@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { usePhotonewsData } from "@/hooks/usePhotonewsData";
 import PhotoNewsSidebar from "./PhotoNewsSidebar";
-import parse from 'html-react-parser'
+import parse from "html-react-parser";
 const NewsSlider: React.FC = () => {
   const { photoNewsData, loading, error } = usePhotonewsData();
   const [currentCarouselIndex, setCurrentCarouselIndex] = useState<number>(0);
@@ -41,7 +41,8 @@ const NewsSlider: React.FC = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading photo news</p>;
-  if (!photoNewsData || photoNewsData.length === 0) return <p>No Data Available</p>;
+  if (!photoNewsData || photoNewsData.length === 0)
+    return <p>No Data Available</p>;
 
   return (
     <div className="py-8">
@@ -60,8 +61,14 @@ const NewsSlider: React.FC = () => {
             <div className="relative w-full aspect-[3/2] overflow-hidden">
               <div className="relative w-full h-full aspect-[3/2]">
                 <Image
-                  src={photoNewsData[currentCarouselIndex]?.images[0] || "/fallback-image.jpg"}
-                  alt={photoNewsData[currentCarouselIndex]?.imgTagline || "No Image"}
+                  src={
+                    photoNewsData[currentCarouselIndex]?.images[0] ||
+                    "/fallback-image.jpg"
+                  }
+                  alt={
+                    photoNewsData[currentCarouselIndex]?.imgTagline ||
+                    "No Image"
+                  }
                   className="object-cover h-full w-full "
                   width={500}
                   height={500}
@@ -71,10 +78,15 @@ const NewsSlider: React.FC = () => {
               <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-1 lg:p-4">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-sm text-gray-300 hidden lg:block">
-                    {new Date(photoNewsData[currentCarouselIndex]?.postDate).toLocaleDateString()}
+                    {new Date(
+                      photoNewsData[currentCarouselIndex]?.postDate
+                    ).toLocaleDateString()}
                   </span>
                 </div>
-                <Link href={`/view-details-photo/${photoNewsData[currentCarouselIndex]?._id}`} className="hover:text-blue-500">
+                <Link
+                  href={`/photo/${photoNewsData[currentCarouselIndex]?.slug}`}
+                  className="hover:text-blue-500"
+                >
                   <h2 className=" text-ellipsis text-xl lg:text-2xl font-bold mb-2">
                     {photoNewsData[currentCarouselIndex]?.title}
                   </h2>
@@ -108,5 +120,3 @@ const NewsSlider: React.FC = () => {
   );
 };
 export default NewsSlider;
-
-

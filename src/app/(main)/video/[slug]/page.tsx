@@ -66,7 +66,7 @@ const SingleDetails = () => {
                                     {singleNewsData ? <NewsCard news={singleNewsData} /> : <p>Loading news...</p>}
                                     <Feedback />
                                     <Advertisements />
-                                    <RelatedNews basePath='/video' />
+                                    {/* <RelatedNews basePath='/video' /> */}
                                     <PaginationPages />
                                 </div>
 

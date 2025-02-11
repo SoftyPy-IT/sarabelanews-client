@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+"use client";
 import SaidBar from "@/components/Sports/SaidBar";
 import image1 from "@public/asset/Gallery/image-6.jpg";
 import related_news from "@public/asset/Gallery/image02.jpg";
@@ -6,6 +8,7 @@ import Advertisement_3 from "@/util/Advertisement_3";
 import Feedback from "@/util/Feedback";
 import RelatedNews from "@/components/News/RelatedNews";
 import PhotoNewsCard from "../__components/PhotoNewsCard";
+import { usePhotonewsData } from "@/hooks/usePhotonewsData";
 
 const newsData = {
   id: 1,
@@ -100,6 +103,11 @@ const relatedNews = [
 ];
 
 const Page = () => {
+const category = ''
+const bashPath = ''
+const { photoNewsData} = usePhotonewsData();
+
+
   return (
     <main className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,7 +130,7 @@ const Page = () => {
           <div className="hidden lg:block w-full lg:w-1/4">
             <div className="sticky top-[70px]">
               <div className="bg-white py-2">
-                <SaidBar />
+                <SaidBar basePath={bashPath} category={category} />
               </div>
             </div>
           </div>
