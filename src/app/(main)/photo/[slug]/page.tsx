@@ -5,8 +5,7 @@ import { useEffect, useState } from "react";
 import { useParams, } from "next/navigation";
 import { TNews } from "@/types";
 import Advertisements from "@/components/Share/_components/Advertisment";
-import RelatedNews from "@/components/Share/_components/RelatedNews";
-import Feedback from "@/components/Share/_components/Feedback";
+import Feedback from "@/components/Share/_components/Comment/Feedback";
 import NewsCard from "@/components/Share/_components/NewsCard";
 import PhotoNewsSidebar from "../_components/PhotoNewsSidebar";
 
@@ -17,12 +16,14 @@ const SingleDetails = () => {
     const [singleNewsData, setSingleNewsData] = useState<TNews | null>(null);
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null);
+    console.log('photo data', singleNewsData)
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setLoading(true)
-                const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/photonews/${decodedSlug}`);
+                const res = await fetch(`https://api.sarabelanews24.com/api/v1/photonews/${decodedSlug}`);
+                // const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/photonews/${decodedSlug}`);
                 if (!res.ok) {
                     throw new Error(`HTTP error! status: ${res.status}`);
                 }
@@ -63,7 +64,9 @@ const SingleDetails = () => {
 
                                 <div className="overflow-hidden">
                                     {singleNewsData ? <NewsCard news={singleNewsData} /> : <p>Loading news...</p>}
-                                    <Feedback />
+                                    {singleNewsData ? <Feedback news={singleNewsData}/> : <p>Loading news...</p>}
+
+
                                     <Advertisements />
                                     {/* <RelatedNews basePath='/photonews' /> */}
                                     <PaginationPages />
@@ -78,7 +81,7 @@ const SingleDetails = () => {
                     <div className="hidden lg:block w-full lg:w-1/4">
                         <div className="sticky top-[70px]">
                             <div className="bg-white py-2">
-                              <PhotoNewsSidebar basePath="/photo"/>
+                                <PhotoNewsSidebar basePath="/photo" />
                             </div>
                         </div>
                     </div>

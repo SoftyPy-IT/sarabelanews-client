@@ -26,6 +26,7 @@ const SideTabs = ({ category, basePath = "/" }: TopNewsProps) => {
       <TabsContent value="most_read">
         <ReadNews category={category} basePath={basePath} />
       </TabsContent>
+
       <TabsContent value="important">
         <ImportantNews />
       </TabsContent>
