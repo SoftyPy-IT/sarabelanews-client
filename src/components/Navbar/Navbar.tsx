@@ -1,7 +1,14 @@
 "use client";
 import * as React from "react";
 import Link from "next/link";
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 import {
   Facebook,
   Twitter,
@@ -19,8 +26,10 @@ import logo from "@public/asset/logo/logo3.png";
 import { usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleDarkMode } from "@/lib/themeSlice";
-import { Camera, Video } from "lucide-react"
-import { Separator } from "@/components/ui/separator"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
+import BreakingNews from "@/components/Share/BreakingNews/BreakingNews";
+
+
 interface SocialLink {
   id: string;
   icon: React.ReactNode;
@@ -77,17 +86,15 @@ const Navbar: React.FC = () => {
       ref={navRef}
       className="dark:text-black bg-white dark:bg-gray-400 border-b shadow-sm"
     >
-      {/* Mobile Navigation */}
       <div className="lg:hidden">
-        {/* First Section - Logo, Search, User */}
         <div className="border-b border-gray-200 px-4 py-2">
           <div className="flex items-center justify-between">
             <Image
               src={logo}
               alt="Daily Times 24"
-              width={120}
+              width={150}
               height={50}
-              className="w-28"
+              className="w-36"
             />
             <div className="flex items-center gap-3">
               <Link href="/search">
@@ -116,23 +123,25 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        {/* Second Section - Category Menu and Toggle */}
-        <div className="px-4 py-2 border-b border-red-500 overflow-x-hidden">
+        <div className="px-4 py-2 shadow-lg z-50 border-b">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 overflow-auto">
+          <div className="flex items-center gap-2 overflow-auto no-scrollbar">
+
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`whitespace-nowrap px-3 py-1 text-sm ${pathname === item.href
-                    ? "text-red-500 font-medium"
-                    : "text-gray-600"
-                    }`}
+                  className={`whitespace-nowrap px-3 py-1 text-sm ${
+                    pathname === item.href
+                      ? "text-red-500 font-medium"
+                      : "text-gray-600"
+                  }`}
                 >
                   {item.label}
                 </Link>
               ))}
             </div>
+
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="focus:outline-none ml-2"
@@ -141,39 +150,13 @@ const Navbar: React.FC = () => {
             </button>
           </div>
         </div>
+
+
         <div className="bg-gray-50/50">
+            <h1 style={{  padding: "8px 0" }} className="absolute z-10 w-[100px] bg-white text-black shadow-md ">ব্রেকিং নিউজ</h1>
           <div className="container mx-auto flex items-center  justify-center gap-x-2 px-2 ">
-            {/* Breaking News Bar */}
-            {/* <div className="flex items-center py-2 border-b border-gray-200">
-             
-              <div className="overflow-hidden flex-1">
-                <div className="animate-marquee whitespace-nowrap">
-                  <span className="text-sm font-medium text-red-500">ব্রেকিং নিউজ: </span>
-                </div>
-              </div>
-            </div> */}
-
-            {/* Navigation Bar */}
-            <nav className="flex items-center justify-center py-3 ">
-              <Link href="/photo/গোলাপ-জার্বেরা-চন্দ্রমল্লিকার-বাগানে" className="flex items-center gap-1 hover:opacity-80">
-                <Camera className="w-4 h-4 text-red-500" />
-                <span className="text-sm font-medium">ছবি</span>
-              </Link>
-
-              <Separator orientation="vertical" className="mx-4 h-4" />
-
-              <Link href="/video/ডিবি-জমটুপি-পরিয়ে-বিবস্ত্র-করে-ছাত্রদলের-আরিফকে-পেটায়" className="flex items-center gap-1 hover:opacity-80">
-                <Video className="w-4 h-4 text-red-500" />
-                <span className="text-sm font-medium">ভিডিও</span>
-              </Link>
-
-              <Separator orientation="vertical" className="mx-4 h-4" />
-
-              <Link href="/video/ডিবি-জমটুপি-পরিয়ে-বিবস্ত্র-করে-ছাত্রদলের-আরিফকে-পেটায়" className="flex items-center gap-1 hover:opacity-80">
-                <Video className="w-4 h-4 text-red-500" />
-                <span className="text-sm font-medium">ভিডিও</span>
-              </Link>
-            </nav>
+            <BreakingNews /> 
+            
           </div>
         </div>
       </div>
@@ -181,8 +164,6 @@ const Navbar: React.FC = () => {
       {/* Desktop Navigation */}
       <div className="hidden lg:block max-w-7xl mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-
-
           {/* Navigation Menu */}
           <div>
             <NavigationMenu>
@@ -210,10 +191,11 @@ const Navbar: React.FC = () => {
                     <NavigationMenuItem key={item.href}>
                       <Link
                         href={item.href}
-                        className={`px-3 py-2 hover:text-red-500 ${pathname === item.href
-                          ? "border-b-2 border-black text-red-500"
-                          : ""
-                          }`}
+                        className={`px-3 py-2 hover:text-red-500 ${
+                          pathname === item.href
+                            ? "border-b-2 border-black text-red-500"
+                            : ""
+                        }`}
                       >
                         {item.label}
                       </Link>
@@ -264,60 +246,54 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="lg:hidden bg-white absolute top-[116px] left-0 right-0 z-50">
-          <div className="p-4">
-            <div className="space-y-2">
-              {navItems.map((item) => (
-                <div key={item.href}>
-                  {item.nested ? (
-                    <div className="space-y-2">
-                      <div className="font-medium text-gray-800">
+          <div className="bg-white absolute top-[142px] left-0 right-0 z-50 p-4 shadow-md border">
+        
+            <div className="grid grid-cols-2 gap-2">
+              {navItems.map((item) =>
+                item.nested ? (
+                  <Accordion key={item.href} type="single" collapsible>
+                    <AccordionItem value={item.href}>
+                      <AccordionTrigger className="flex px-3 py-2 text-gray-800 hover:text-red-500">
                         {item.label}
-                      </div>
-                      <div className="pl-4 space-y-2">
-                        {item.nested.map((nestedItem) => (
-                          <Link
-                            key={nestedItem.href}
-                            href={nestedItem.href}
-                            className="block py-2 text-gray-600 hover:text-blue-600"
-                          >
-                            {nestedItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <Link
-                      href={item.href}
-                      className={`block px-2 py-2 rounded ${pathname === item.href
-                        ? "text-blue-600 font-medium"
-                        : "text-gray-700 hover:text-blue-600"
-                        }`}
-                    >
-                      {item.label}
-                    </Link>
-                  )}
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <div className="flex justify-center space-x-4">
-                {socialLinks.map((link) => (
-                  <Link key={link.id} href={link.link}>
-                    <div className="rounded-full bg-gray-500 p-2 text-white hover:bg-red-500 transition-colors">
-                      {link.icon}
-                    </div>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="space-y-2 pl-4">
+                          {item.nested.map((nestedItem) => (
+                            <Link
+                              key={nestedItem.href}
+                              href={nestedItem.href}
+                              className="block py-1 text-gray-600 hover:text-blue-600"
+                            >
+                              {nestedItem.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`border-b px-3 py-2 rounded text-center ${
+                      pathname === item.href ? "text-red-500 font-medium" : "text-gray-700 hover:text-blue-600"
+                    }`}
+                  >
+                    {item.label}
                   </Link>
-                ))}
-              </div>
+                )
+              )}
             </div>
           </div>
-        </div>
-      )}
+        )}
+
+
+
+
+
     </div>
   );
 };
-
 
 interface ListItemProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   title: string;
