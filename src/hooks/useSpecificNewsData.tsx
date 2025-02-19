@@ -7,9 +7,10 @@ interface UseSpecificNewsDataProps {
     newsTag?: string;
     limit?: string;
     searchTerm?: string;
+    currentNews?:string
 }
 
-export const useSpecificNewsData = ({ category, newsTag, limit, searchTerm }: UseSpecificNewsDataProps) => {
+export const useSpecificNewsData = ({ category, newsTag, limit, searchTerm,currentNews }: UseSpecificNewsDataProps) => {
     const [newsData, setNewsData] = useState<TNews[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -20,13 +21,14 @@ export const useSpecificNewsData = ({ category, newsTag, limit, searchTerm }: Us
             setError(null);
 
             try {
-                const url = new URL(`https://api.sarabelanews24.com/api/v1/news`);
+                const url = new URL(`${process.env.NEXT_PUBLIC_BASE_API_URL}/news`);
                 const params = new URLSearchParams({ fields: newsFields });
 
                 if (category) params.append("category", category);
                 if (limit) params.append("limit", limit);
                 if (newsTag) params.append("newsTag", newsTag);
                 if (searchTerm) params.append("searchTerm", searchTerm); 
+                if (currentNews) params.append("currentNews", currentNews); 
 
                 url.search = params.toString();
 

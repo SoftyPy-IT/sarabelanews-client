@@ -11,15 +11,11 @@ import SearchShowData from "./_components/SearchShowData";
 import { DatePickerDemo } from "./_components/DatePicker";
 import { RadioGroup, RadioGroupItem } from "./_components/RadioGroupItem";
 
-import { getEnglishCategory } from "@/util/getEnglishCategory";
 const Page = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [query, setQuery] = useState("");
   const [selectedWriter, setSelectedWriter] = React.useState("")
   const { newsData, loading, error } = useSpecificNewsData({ searchTerm: query });
-
-  const searchCategory = newsData && newsData[0] ? newsData[0]?.category?.name : ''
-  const category = getEnglishCategory(searchCategory)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setQuery(searchTerm);
@@ -30,20 +26,20 @@ const Page = () => {
       <form onSubmit={handleSubmit}>
         <h1 className="text-2xl font-bold">অনুসন্ধান</h1>
 
-        <div className="flex gap-2 mt-3 ">
+        <div className="flex items-center  gap-2 mt-3 ">
           <div className="flex-1">
             <Input
               name="search"
               type="search"
               placeholder="যা খুঁজতে চান"
-              className="w-full h-[60px] rounded-md"
+              className="w-full h-[60px] rounded-md dark:text-white"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               
             />
           </div>
-          <Button type="submit" className="h-[60px]">
-            <Search className="h-[40px] w-[40px] " />
+          <Button type="submit" className="h-[56px]">
+            <Search className="" />
           </Button>
         </div>
 
@@ -75,7 +71,7 @@ const Page = () => {
               <label className="text-sm">ধরন</label>
 
               <Select>
-                <SelectTrigger className="w-full h-[50px] bg-white">
+                <SelectTrigger className="w-full h-[50px] dark:bg-black bg-white">
                   <SelectValue placeholder="সব" />
                 </SelectTrigger>
                 <SelectContent>
@@ -158,7 +154,7 @@ const Page = () => {
 
 
 
-      <SearchShowData loading={loading} error={error} newsData={newsData} category={category} />
+      <SearchShowData loading={loading} error={error} newsData={newsData}/>
     </div>
   );
 };
