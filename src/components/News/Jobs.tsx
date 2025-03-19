@@ -5,12 +5,13 @@ import { ChevronRight } from "lucide-react"
 import type { TNews } from "@/types"
 import { sortByDate } from "@/util/sort"
 import UseNewsTagsData from "@/hooks/useNewsTagsData"
+import Loading from "../Share/_components/Loading"
 
 const Education = () => {
   const basePath = 'job';
   const { newsData, loading, error } = UseNewsTagsData(basePath)
   if (loading) {
-    return <h3>Loading.......</h3>
+    return <Loading/>
   }
   if (error) {
     return <h3>Oops! data not found.</h3>
@@ -45,7 +46,7 @@ const Education = () => {
         {sortNewsData.map((news: TNews) => (
           <div key={news._id}>
             <h1 className="text-xl font-semibold py-2 border-b-2 hover:text-blue-500">
-              <Link href={`${basePath}/${news.slug}`}>{news?.newsTitle}</Link>
+              <Link href={`${basePath}/${news._id}`}>{news?.newsTitle}</Link>
             </h1>
           </div>
         ))}
