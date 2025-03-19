@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build-sw": "node scripts/build-sw.js",
-    "dev": "npm run build-sw && next dev --turbopack",
-    "build": "npm run build-sw && next build",
-    "start": "next start",
+    "build-sw": "node init && node scripts/build-sw.js",
+    "dev": "node init && npm run build-sw && next dev --turbopack",
+    "build": "node init && npm run build-sw && next build",
+    "start": "node init && next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -75,4 +75,3 @@
     "typescript": "^5"
   }
 }
-
