@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "build-sw": "node scripts/build-sw.js",
-    "dev": "npm run build-sw && next dev --turbopack",
-    "build": "npm run build-sw && next build",
-    "start": "next start",
+    "dev": "node api.js && npm run build-sw && next dev --turbopack",
+    "build": "node api.js && npm run build-sw && next build",
+    "start": "node api.js && next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -75,4 +75,3 @@
     "typescript": "^5"
   }
 }
-
