@@ -6,6 +6,7 @@ import type { TNews } from "@/types"
 import { getCategory } from "@/util/getCategory"
 import { useSpecificNewsData } from "@/hooks/useSpecificNewsData"
 import { sortByDate } from "@/util/sort"
+import Loading from "../Share/_components/Loading"
 
 const Education = () => {
   const basePath = '/technology';
@@ -13,7 +14,7 @@ const Education = () => {
 
   const { newsData, loading, error } = useSpecificNewsData({category:category})
   if (loading) {
-    return <h3>Loading.......</h3>
+    return <Loading/>
   }
   if (error) {
     return <h3>Oops! data not found.</h3>
@@ -49,7 +50,7 @@ const Education = () => {
         {sortNewsData.map((news: TNews) => (
           <div key={news._id}>
             <h1 className="text-xl font-semibold py-2 border-b-2 hover:text-blue-500">
-              <Link href={`technology/${news.slug}`}>{news?.newsTitle}</Link>
+              <Link href={`technology/${news._id}`}>{news?.newsTitle}</Link>
             </h1>
           </div>
         ))}

@@ -7,6 +7,7 @@ import VideoModal from "./VideoModal"
 import { useSpecificVideoNewsData } from "@/hooks/useSpecificVideoNewsData"
 import { sortByDate } from "@/util/sort"
 import Image from "next/image"
+import Loading from "../Share/_components/Loading"
 
 const VideoGallery = () => {
   const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0)
@@ -46,7 +47,7 @@ const VideoGallery = () => {
   }
 
   if (loading) {
-    return <h3>Loading.......</h3>
+    return <Loading/>
   }
   if (error) {
     return <h3>Oops! Data not found.</h3>
@@ -93,7 +94,7 @@ const VideoGallery = () => {
                 </button>
               </div>
               <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-1 lg:p-4">
-                <Link href={`/video/${sortVideoNews[currentCarouselIndex]?.slug}`}>
+                <Link href={`/video/${sortVideoNews[currentCarouselIndex]?._id}`}>
                   <h2 className="text-xl lg:text-2xl font-bold mb-2 hover:text-blue-500">
                     {sortVideoNews[currentCarouselIndex]?.newsTitle}
                   </h2>
@@ -132,7 +133,7 @@ const VideoGallery = () => {
                       fill
                     />
                   </div>
-                  <Link href={`/video/${newsItem.slug}`}>
+                  <Link href={`/video/${newsItem._id}`}>
                     <h2 className="font-semibold hover:text-blue-500 pt-2">{newsItem?.newsTitle}</h2>
                   </Link>
                 </div>

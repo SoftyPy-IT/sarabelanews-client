@@ -1,4 +1,5 @@
 "use client";
+import Loading from "@/components/Share/_components/Loading";
 import { usePhotonewsData } from "@/hooks/usePhotonewsData";
 import { sortByDate } from "@/util/sort";
 import Image from "next/image";
@@ -11,7 +12,7 @@ const PhotoNewsSidebar = ({ basePath = "/photo" }: TopNewsProps) => {
   const { photoNewsData, loading, error } = usePhotonewsData()
 
   if (loading) {
-    return <h3>Loading.......</h3>
+    return <Loading/>
   }
   if (error) {
     return <h3>Oops! data not found.</h3>
@@ -30,7 +31,7 @@ const PhotoNewsSidebar = ({ basePath = "/photo" }: TopNewsProps) => {
           <div key={index} className="flex gap-4 items-start border-b pb-4">
             <div className="w-1/2">
               <h1 className="font-semibold text-gray-800 hover:text-blue-600 cursor-pointer">
-                <Link href={`${basePath}/${news.slug}`}>{news?.title}</Link>
+                <Link href={`${basePath}/${news._id}`}>{news?.title}</Link>
               </h1>
               <p className="truncate">{news?.postDate.toLocaleString()}</p>
             </div>
