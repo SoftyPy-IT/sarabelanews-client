@@ -31,9 +31,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 <<<<<<< HEAD
-.env
 =======
-.env*
 >>>>>>> 34b0afbe0e70111a91ef75b7b4385b0e95b55aca
 !.env.example
 
@@ -43,3 +41,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+config.bat
