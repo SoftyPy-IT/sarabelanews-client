@@ -4,32 +4,35 @@ import Image from "next/image";
 import Link from "next/link";
 import { sortByDate } from "@/util/sort";
 import { useSpecificNewsData } from "@/hooks/useSpecificNewsData";
+import Loading from "../Share/_components/Loading";
+import LeadNewsCard from "./LeadNewsCard";
 
 const NewsCard = () => {
   const basePath = "/international";
   const { newsData, loading, error } = useSpecificNewsData({ currentNews: 'true' });
-  
+
   if (loading) {
-    return <h3>Loading.......</h3>;
+    return <Loading />;
   }
   if (error) {
     return <h3>Oops! data not found.</h3>;
   }
   const sortNewsData = sortByDate(newsData, "postDate");
+
   return (
     <div className="flex flex-col gap-4">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        
-        <div className="hidden lg:flex flex-col gap-4 border-e border-gray-500 pe-2">
+
+        <div className="hidden lg:flex flex-col gap-3 border-e border-gray-500 pe-1">
           {newsData?.slice(0, 3)?.map((news) => {
             return (
               <Link
                 key={news._id}
-                href={`${basePath}/${news.slug}`}
-                className="group flex flex-row-reverse gap-2 border-b  border-gray-200 p-1"
+                href={`/${news?.category?.slug ?? 'national'}/${news._id}`}
+                className="group flex flex-row-reverse gap-2 border-b  border-gray-200 pb-2"
               >
                 <div className="w-full overflow-hidden">
-                  <div className="relative w-full aspect-[3/2] transform transition-transform duration-500 hover:scale-105">
+                  <div className="relative aspect-[3/2] transform transition-transform duration-500 hover:scale-105">
                     {news.images && news.images.length > 0 && (
                       <Image
                         src={news?.images[0] || "/placeholder.svg"}
@@ -43,8 +46,8 @@ const NewsCard = () => {
                     )}
                   </div>
                 </div>
-                <div className="w-full ps-2 lg:pt-2">
-                  <h2 className="text-xl font-bold hover:text-blue-600 transition-colors">
+                <div className="w-full ps-2 lg:pt-0">
+                  <h2 className="text-lg font-bold text-justify hover:text-blue-600 transition-colors">
                     {news.newsTitle}
                   </h2>
                 </div>
@@ -56,8 +59,8 @@ const NewsCard = () => {
         <div className="lg:col-span-2">
           {sortNewsData?.slice(0, 1)?.map((news) => (
             <div key={news._id}>
-              <Link href={`sports/${news.slug}`} className="block group">
-                <div className="relative aspect-[3/2] overflow-hidden">
+              <Link href={`/${news?.category?.slug ?? 'national'}/${news._id}`} className="block group">
+                <div className="relative aspect-[6/5] overflow-hidden">
                   <div className="relative w-full h-full transform transition-transform duration-500 group-hover:scale-105">
 
                     {news?.images?.[0] && (
@@ -66,7 +69,7 @@ const NewsCard = () => {
                         alt={news?.newsTitle || "News Image"}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw"
                         width={500}
-                        height={500}
+                        height={800}
                         className="object-cover w-full h-full "
                       />
                     )}
@@ -85,7 +88,7 @@ const NewsCard = () => {
       <div className="border-t border-gray-500" />
 
       {/* Bottom News Grid */}
-      {/* <LeadNewsCard newsData={sortNewsData} /> */}
+      <LeadNewsCard newsData={sortNewsData} />
     </div>
   );
 };
