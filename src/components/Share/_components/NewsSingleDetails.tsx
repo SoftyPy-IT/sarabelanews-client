@@ -10,7 +10,7 @@ import { useParams } from "next/navigation";
 import { TNews } from "@/types";
 import RelatedNews from "./RelatedNews";
 import { getCategory } from "@/util/getCategory";
-import { useGetSingleNewsQuery } from "@/redux/sarabelanews/news.api";
+
 import SideBarRelatedNews from "./SideBarRelatedNews";
 
 import {
@@ -25,6 +25,7 @@ import { Clock3, House, SquarePen, UserRound } from "lucide-react";
 import { AiFillHome } from "react-icons/ai";
 import DynamicBreadcrumb from "../Breadcrumb/Breadcrumb";
 import Loading from "./Loading";
+import { useGetSingleNewsQuery } from "@/redux/sarabelanews/news.api";
 
 interface TopNewsProps {
   basePath?: string;
@@ -35,6 +36,8 @@ const NewsSingleDetails = ({ basePath, id }: TopNewsProps) => {
   const { data } = useGetSingleNewsQuery(id);
   const singleNewsData = data?.data;
   const [fontSize, setFontSize] = useState(16);
+
+
 
   return (
     <main className="min-h-screen">
@@ -51,12 +54,11 @@ const NewsSingleDetails = ({ basePath, id }: TopNewsProps) => {
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-500">
                   <Clock3 size={"20px"} />
-                  <h5>
-                    {" "}
-                    আপডেট:{" "}
-                    {new Date(singleNewsData?.updatedAt).toLocaleDateString(
-                      "bn-BD",
-                      {
+
+                  {singleNewsData?.updatedAt ? (
+                    <h5>
+                      আপডেট:{" "}
+                      {new Intl.DateTimeFormat("bn-BD", {
                         year: "numeric",
                         month: "long",
                         day: "numeric",
@@ -65,9 +67,12 @@ const NewsSingleDetails = ({ basePath, id }: TopNewsProps) => {
                         minute: "numeric",
                         second: "numeric",
                         hour12: true,
-                      }
-                    )}
-                  </h5>
+                      })
+                        .format(new Date(singleNewsData.updatedAt))
+                        .replace("AM", "এএম")
+                        .replace("PM", "পিএম")}
+                    </h5>
+                  ) : null}
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-500">
                   <SquarePen size={"16px"} />
@@ -91,13 +96,13 @@ const NewsSingleDetails = ({ basePath, id }: TopNewsProps) => {
                   {singleNewsData ? (
                     <NewsCard news={singleNewsData} />
                   ) : (
-                    <Loading/>
+                    <Loading />
                   )}
 
                   {singleNewsData ? (
                     <Feedback news={singleNewsData} />
                   ) : (
-                    <Loading/>
+                    <Loading />
                   )}
                   <Advertisements />
                   <RelatedNews category={category} basePath={basePath} />

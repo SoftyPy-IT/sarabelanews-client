@@ -25,7 +25,7 @@ const LastNews = () => {
 
   return (
     <div
-      className="w-full max-h-[200px] lg:max-h-[700px] px-2 md:px-4 overflow-y-auto 
+      className="w-full max-h-[200px] lg:max-h-[700px] px-0 overflow-y-auto 
         [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
     >
       <ul className="divide-y divide-gray-200">
@@ -39,20 +39,20 @@ const LastNews = () => {
             >
               <Link
                 href={`/${news?.category?.slug ?? 'national'}/${news._id}`}
-                className="block space-y-1"
+                className=" "
               >
                 <h3
-                  className="text-sm md:text-base lg:text-lg font-semibold 
-                  line-clamp-1 hover:text-blue-600 transition-colors"
+                  className="px-2  text-sm md:text-lg font-semibold 
+                  line-clamp-1 text-gray-700 hover:text-blue-600 transition-colors"
                 >
                   {news?.newsTitle}
                 </h3>
-                <p className="text-xs md:text-sm line-clamp-2">
+                <p className="px-2  text-xs md:text-[17px] line-clamp-3 text-gray-500">
                   {news?.description
-                    ? parse(truncateText(news.description, 150))
+                    ? parse(truncateText(news.description, 250))
                     : ""}
                 </p>
-                <div className="flex justify-between items-center text-xs md:text-sm">
+                <div className="px-2 flex justify-between items-center text-xs md:text-sm">
                   <span>{formatDate(news?.postDate)}</span>
                   <span className="text-blue-500 hover:text-blue-700">
                     আরও পড়ুন

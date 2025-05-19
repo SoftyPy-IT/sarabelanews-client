@@ -60,7 +60,7 @@ const EntertainmentNewsCard = () => {
           </div>
         ))}
         <div className="space-y-6 order-2 lg:order-1 lg:col-span-1 lg:border-e border-black dark:border-gray-400">
-          {sortNewsData.slice(0, 3).map((news, idx) => (
+          {sortNewsData.slice(1, 4).map((news, idx) => (
             <div key={idx} className="overflow-hidden flex items-stretch">
               <div className="w-1/2">
                 <div className="relative aspect-[3/2] overflow-hidden ">
@@ -90,7 +90,7 @@ const EntertainmentNewsCard = () => {
         </div>
 
         <div className="hidden md:block space-y-6 order-3 lg:order-3 lg:col-span-1 border-s border-black dark:border-gray-400">
-          {sortNewsData?.slice(2)?.map((news) => (
+          {sortNewsData?.slice(5)?.map((news) => (
             <div key={news._id} className="overflow-hidden flex items-stretch">
               <div className="flex-1 px-2 flex flex-col justify-between">
                 <Link href={`/entertainment/${news._id}`}>

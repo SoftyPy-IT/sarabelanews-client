@@ -10,11 +10,12 @@ export type TNews = {
   upazila: string;
   internationalArea: string;
   displayLocation: string;
+  newsLocation: string;
   images: string[];
   photojournalistName: string;
   category: {
     name: string;
-    slug:string;
+    slug: string;
   };
   newsCategory: string;
   newsTitle: string;
@@ -23,6 +24,7 @@ export type TNews = {
   description: string;
   imageTagline: string;
   currentNews: boolean;
+  localNews: boolean;
   adminName: string;
   postDate: string;
   newsTag: [string];
@@ -31,7 +33,7 @@ export type TNews = {
   metaTitle: string;
   metaKeywords: string[];
   metaDescription: string;
-  updatedAt:string;
+  updatedAt: string;
   comments: {
     _id: string;
     user: {
@@ -41,8 +43,6 @@ export type TNews = {
     comments: string;
     createdAt: Date;
   }[];
-
-
 };
 
 export type TVideoNews = {
@@ -91,14 +91,14 @@ export type TPhotoNews = {
 };
 
 export interface Comment {
-  id: string
-  text: string
+  id: string;
+  text: string;
   author: {
-    name: string
-    avatar: string
-  }
-  createdAt: Date
-  likes: number
+    name: string;
+    avatar: string;
+  };
+  createdAt: Date;
+  likes: number;
 }
 
 export interface TComments {

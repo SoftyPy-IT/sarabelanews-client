@@ -57,7 +57,7 @@ const TopNews = ({ category, basePath }: TopNewsProps) => {
           ))
         }
 
-        {sortNewsData?.slice(0, 5).map((news) => (
+        {sortNewsData?.slice(1, 5).map((news) => (
           <div key={news._id} className="overflow-hidden">
             <div className="relative h-32  w-full aspect-[3/2] hover:scale-105 duration-500 ">
 

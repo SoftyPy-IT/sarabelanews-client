@@ -39,7 +39,7 @@ const ReadNews = ({ category }: BaseProps) => {
               <h3 className="text-lg font-semibold  hover:text-blue-500">
                 {news.newsTitle}
               </h3>
-              <p className="text-sm  line-clamp-2">
+              <p className="text-[17px] line-clamp-3">
                 {parse(truncateText(news?.description, 200))}
               </p>
               <span className="text-xs">{formatDate(news.postDate)}</span>

@@ -21,7 +21,9 @@ const DateAndTime = () => {
         minute: "numeric",
         second: "numeric",
         hour12: true,
-      });
+      })
+        .replace("AM", "এএম")
+        .replace("PM", "পিএম");
 
       setCurrentDate(formattedDate);
       setCurrentTime(formattedTime);

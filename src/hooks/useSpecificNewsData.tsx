@@ -10,6 +10,7 @@ interface UseSpecificNewsDataProps {
   limit?: string
   searchTerm?: string
   currentNews?: string
+  newsLocation?: string
   division?: string | null
   district?: string | null
   upazila?: string | null
@@ -21,6 +22,7 @@ export const useSpecificNewsData = ({
   limit,
   searchTerm,
   currentNews,
+  newsLocation,
   division,
   district,
   upazila,
@@ -43,6 +45,7 @@ export const useSpecificNewsData = ({
         if (newsTag) params.append("newsTag", newsTag)
         if (searchTerm) params.append("searchTerm", searchTerm)
         if (currentNews) params.append("currentNews", currentNews)
+        if (newsLocation) params.append("newsLocation", newsLocation)
 
         // Add location parameters
         if (division) params.append("division", division)
@@ -63,7 +66,7 @@ export const useSpecificNewsData = ({
           throw new Error("No news data found!")
         }
 
-        setNewsData(data.data.news)
+        setNewsData(data?.data?.news)
       } catch (err: any) {
         setError(err.message || "Failed to load news data!")
       } finally {
@@ -72,7 +75,7 @@ export const useSpecificNewsData = ({
     }
 
     fetchNewsData()
-  }, [category, newsTag, searchTerm, currentNews, division, district, upazila, limit])
+  }, [category, newsTag, searchTerm, currentNews, newsLocation, division, district, upazila, limit])
 
   return { newsData, loading, error }
 }

@@ -10,20 +10,20 @@ const SaidTabs = () => {
   return (
     <Tabs defaultValue="latest" defaultChecked>
       <TabsList>
-        <TabsTrigger value="latest" className="font-semibold">
+        <TabsTrigger value="latest" className="text-[18px] font-semibold">
           সর্বশেষ
         </TabsTrigger>
-        <TabsTrigger value="important" className="font-semibold">
+        <TabsTrigger value="important" className="text-[18px] font-semibold">
           গুরুত্বপূর্ণ
         </TabsTrigger>
-        <TabsTrigger value="dailyIslam" className="font-semibold">
+        <TabsTrigger value="dailyIslam" className="text-[18px] font-semibold">
           দৈনন্দিন ইসলাম
         </TabsTrigger>
       </TabsList>
-      <TabsContent value="latest">
+      <TabsContent value="latest" >
         <LastNews />
       </TabsContent>
-      <TabsContent value="important">
+      <TabsContent value="important" >
         <ImportantNews />
       </TabsContent>
 

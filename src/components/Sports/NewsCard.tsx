@@ -44,7 +44,7 @@ const NewsCard = ({ newsData }: NewsProps) => {
           ))
         }
         {/* Normal News */}
-        {newsData?.slice(0, 2)?.map((news) => (
+        {newsData?.slice(1, 3)?.map((news) => (
           <div key={news._id} className="col-span-1">
             <Link href={`sports/${news._id}`} className="block group">
               <article className="overflow-hidden">

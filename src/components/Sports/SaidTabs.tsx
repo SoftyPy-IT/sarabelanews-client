@@ -9,13 +9,13 @@ const SaidTabs = () => {
   return (
     <Tabs defaultValue="Read" defaultChecked>
       <TabsList>
-        <TabsTrigger value="Read" className="font-semibold">
+        <TabsTrigger value="Read" className="text-[18px] font-semibold">
           পঠিত
         </TabsTrigger>
-        <TabsTrigger value="Discussed" className="font-semibold">
+        <TabsTrigger value="Discussed" className="text-[18px] font-semibold">
           আলোচিত
         </TabsTrigger>
-        <TabsTrigger value="GoodNews" className="font-semibold">
+        <TabsTrigger value="GoodNews" className="text-[18px] font-semibold">
           সুখবর
         </TabsTrigger>
       </TabsList>

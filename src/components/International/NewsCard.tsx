@@ -77,7 +77,7 @@ const NewsCard = () => {
 
         {/* Normal News Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {sortNewsData?.slice(0, 4)?.map((news) => (
+          {sortNewsData?.slice(1, 5)?.map((news) => (
             <div
               key={news._id}
               className="overflow-hidden flex flex-row lg:flex-col"

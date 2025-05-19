@@ -16,6 +16,7 @@ interface NewsCardProps {
   news: TNews & { videoUrl?: string };
 }
 
+
 const NewsCard: React.FC<NewsCardProps> = ({ news }: NewsCardProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -26,7 +27,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ news }: NewsCardProps) => {
   return (
     <article className="lg:pt-8" id="news-content">
       <div className="lg:hidden flex justify-between">
-        <DynamicBreadcrumb news={news}/>        
+        <DynamicBreadcrumb news={news} />
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-sm text-gray-500">
             <SquarePen size={"16px"} />
@@ -48,19 +49,27 @@ const NewsCard: React.FC<NewsCardProps> = ({ news }: NewsCardProps) => {
           <div className="flex items-center gap-2 text-sm text-gray-500">
             <Clock3 size={"20px"} />
             
-            <h5>
-              আপডেট:{" "}
-              {new Date(news?.updatedAt).toLocaleDateString("bn-BD", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-                weekday: "long",
-                hour: "numeric",
-                minute: "numeric",
-                second: "numeric",
-                hour12: true,
-              })}
-            </h5>
+
+
+        {news?.updatedAt ? (
+                    <h5>
+                      আপডেট:{" "}
+                      {new Intl.DateTimeFormat("bn-BD", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                        weekday: "long",
+                        hour: "numeric",
+                        minute: "numeric",
+                        second: "numeric",
+                        hour12: true,
+                      })
+                        .format(new Date(news.updatedAt))
+                        .replace("AM", "এএম")
+                        .replace("PM", "পিএম")}
+                    </h5>
+                  ) : null}
+
           </div>
         </div>
       </div>
@@ -115,7 +124,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ news }: NewsCardProps) => {
                 <p className="font-bengali text-center">
                   {news.imageTagline}{" "}
                   <span className="dark:text-white text-gray-500">
-                    ছবি : সারাবেলানিউজ২৪
+                    ছবি : ডেইলিটাইমস২৪
                   </span>
                 </p>
               </CardFooter>
@@ -132,9 +141,9 @@ const NewsCard: React.FC<NewsCardProps> = ({ news }: NewsCardProps) => {
         <p className="mt-2 dark:text-white text-gray-700">
           {news?.description ? parse(news.description) : ""}
         </p>
-        <p className="mt-1 text-sm dark:text-gray-300 text-gray-500">
+        {/* <p className="mt-1 text-sm dark:text-gray-300 text-gray-500">
           Estimated Read Time: {formatDate(news?.postDate)}
-        </p>
+        </p> */}
       </div>
     </article>
   );

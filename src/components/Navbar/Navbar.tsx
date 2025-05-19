@@ -66,11 +66,6 @@ const socialLinks: SocialLink[] = [
   },
 ]
 
-// Generate navItems dynamically from categoryData
-
-// Use the dynamic navItems based on categoryData
-
-
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false)
   const navRef = React.useRef<HTMLDivElement>(null)

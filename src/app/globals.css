@@ -66,15 +66,19 @@
   }
 }
 
+
+@font-face {
+  font-family: 'SolaimanLipi';
+  src: url('/fonts/SolaimanLipi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 body {
-  font-family:  'Tiro Bangla',  sans-serif !important;
+  font-family: 'SolaimanLipi', sans-serif;
 }
 
-
-
-.english-text {
-  font-family: 'Poppines';
-}
 
 
 

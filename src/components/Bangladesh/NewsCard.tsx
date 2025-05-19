@@ -1,3 +1,4 @@
+
 "use client";
 import React from "react";
 import Image from "next/image";
@@ -13,6 +14,9 @@ import Loading from "../Share/_components/Loading";
 const NewsCard = () => {
 
   const { newsData, loading, error } = useSpecificNewsData({})
+
+  console.log("Raw news data:", newsData);
+
   if (loading) {
     return <Loading />;
   }
@@ -20,7 +24,19 @@ const NewsCard = () => {
     return <h3>Oops! data not found.</h3>;
   }
 
+
   const sortNewsData = sortByDate(newsData, "postDate");
+
+
+  // Add filter for local news
+  // const localNewsData = sortNewsData?.filter(news => news.localNews === true);
+  const localNewsData = sortNewsData?.filter(news => news.localNews === true);
+
+  if (localNewsData?.length === 0) {
+    return <div className="text-center py-8">No local news found</div>;
+  }
+
+
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -36,7 +52,7 @@ const NewsCard = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {sortNewsData?.slice(0, 1).map((news) => (
+        {localNewsData?.slice(0, 1).map((news) => (
           <div key={news._id} className="overflow-hidden relative">
             <div className="relative w-full aspect-[3/2]">
               {news.images?.[0] && (
@@ -53,7 +69,7 @@ const NewsCard = () => {
               <h2 className="text-2xl font-bold mb-2 hover:text-blue-600">
                 <Link href={`/${news?.category?.slug ?? 'national'}/${news._id}`}>{news.newsTitle}</Link>
               </h2>
-              <p className="text-gray-600 mb-3">
+              <p className="text-gray-600 mb-3 text-[17px] ">
                 {parse(truncateText(news?.shortDescription, 300))}
               </p>
               <div className="flex justify-between text-xs">
@@ -65,30 +81,44 @@ const NewsCard = () => {
             </div>
           </div>
         ))}
+
         {/* Normal News Section */}
-        <div className="grid grid-cols-1 gap-4 lg:border-s dark:border-gray-300 border-black lg:ps-4">
-          {sortNewsData?.slice(0, 4)?.map((news) => (
+        <div className="grid grid-cols-1 gap-2 lg:border-s dark:border-gray-300 border-black ">
+          {localNewsData?.slice(1, 5)?.map((news) => (
             <div
               key={news._id}
-              className="flex border-b-2 dark:border-gray-300 overflow-hidden flex-row-reverse"
+              className="flex border-b-2 dark:border-gray-300 overflow-hidden flex-row-reverse px-2"
             >
-              <div className="w-2/5 relative h-full aspect-[2/1] overflow-hidden">
+              <div className="w-2/5 relative aspect-[2/1] overflow-hidden">
                 {news.images?.[0] && (
                   <Image
                     src={news.images[0]}
                     alt={news.newsTitle || "News Image"}
-                    className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+                    className="w-[130px] md:w-full h-[115px] transition-transform duration-300 hover:scale-105"
                     width={500}
-                    height={1000}
+                    height={100}                
                   />
                 )}
               </div>
-              <div className="flex-1 pe-1">
+
+              <div className="hidden md:block flex-1 pe-1">
                 <h2 className="text-lg font-bold hover:text-blue-600">
                   <Link href={`/${news?.category?.slug ?? 'national'}/${news._id}`}>{news.newsTitle}</Link>
                 </h2>
-                <p className="text-sm text-gray-600 touch-pan-right">
-                  {truncateText(news.shortDescription, 300)}
+                <p className="text-[17px] text-gray-600 touch-pan-right">
+                  {truncateText(news.shortDescription, 150)}
+                </p>
+                <p className="text-blue-600 text-sm">
+                  <Link href={`/national`}>আরো পড়ুন</Link>
+                </p>
+              </div>
+
+              <div className="md:hidden flex-1 pe-1">
+                <h2 className="font-semibold hover:text-blue-600">
+                  <Link href={`/${news?.category?.slug ?? 'national'}/${news._id}`}>{truncateText (news.newsTitle,55)}</Link>
+                </h2>
+                <p className="  text-gray-600 touch-pan-right">
+                  {truncateText(news.shortDescription, 80)}
                 </p>
                 <p className="text-blue-600 text-sm">
                   <Link href={`/national`}>আরো পড়ুন</Link>
@@ -103,3 +133,4 @@ const NewsCard = () => {
 };
 
 export default NewsCard;
+

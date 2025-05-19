@@ -3,15 +3,15 @@ import { useSpecificNewsData } from "@/hooks/useSpecificNewsData";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
 
-import "./BreakingNews.css"; 
+import "./BreakingNews.css";
 import Loading from "../_components/Loading";
 
 const BreakingNews = () => {
-  const { newsData, loading, error } = useSpecificNewsData({limit:'1000'});
+  const { newsData, loading, error } = useSpecificNewsData({ limit: '1000' });
 
 
   if (loading) {
-    return <Loading/>;
+    return <Loading />;
   }
   if (error) {
     return <h3>Oops! data not found.</h3>;
@@ -21,7 +21,7 @@ const BreakingNews = () => {
     <div className="breaking-news-container  dark:bg-gray-600 lg:bg-[#333] shadow-md">
       <h2 className="breaking-news-title text-red-600 ">শিরোনাম</h2>
       <Marquee pauseOnHover={true} speed={50}>
-        {newsData.map((news, index) => {          
+        {newsData?.slice(0,9).map((news, index) => {
           return (
             <div key={index} className="breaking-news-item ">
               <Link href={`/${news.category?.slug ?? "national"}/${news._id}`}>{news.newsTitle}</Link>
