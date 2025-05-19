@@ -22,7 +22,7 @@ const DynamicBreadcrumb = ({ news }: any) => {
       <BreadcrumbList className="text-black flex items-center">
         <BreadcrumbItem>
           <BreadcrumbLink href="/">
-            <AiFillHome className="w-[18px] lg:w-[17px] h-[18px] lg:h-[17px]" />
+            <AiFillHome className="w-[18px] lg:w-[17px] h-[18px] lg:h-[17px] dark:text-gray-300" />
           </BreadcrumbLink>
         </BreadcrumbItem>
 
@@ -31,9 +31,9 @@ const DynamicBreadcrumb = ({ news }: any) => {
 
           return (
             <React.Fragment key={href}>
-              <BreadcrumbSeparator />
+              <BreadcrumbSeparator className="dark:text-gray-200"/>
               <BreadcrumbItem>
-                <BreadcrumbLink href={href}>
+                <BreadcrumbLink href={href} className="dark:text-gray-300">
                   {news?.category?.name}
                 </BreadcrumbLink>
               </BreadcrumbItem>

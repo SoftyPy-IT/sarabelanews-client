@@ -7,7 +7,7 @@ import { PlayCircle } from "lucide-react";
 import { formatDate } from "@/util/formateDate";
 import parse from "html-react-parser";
 import SocialShare from "./Comment/SocialShare";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import type { TNews } from "@/types";
 import { Clock3, SquarePen, UserRound } from "lucide-react";
 import DynamicBreadcrumb from "../Breadcrumb/Breadcrumb";
@@ -48,33 +48,30 @@ const NewsCard: React.FC<NewsCardProps> = ({ news }: NewsCardProps) => {
           </div>
           <div className="flex items-center gap-2 text-sm text-gray-500">
             <Clock3 size={"20px"} />
-            
-
-
-        {news?.updatedAt ? (
-                    <h5>
-                      আপডেট:{" "}
-                      {new Intl.DateTimeFormat("bn-BD", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                        weekday: "long",
-                        hour: "numeric",
-                        minute: "numeric",
-                        second: "numeric",
-                        hour12: true,
-                      })
-                        .format(new Date(news.updatedAt))
-                        .replace("AM", "এএম")
-                        .replace("PM", "পিএম")}
-                    </h5>
-                  ) : null}
+            {news?.updatedAt ? (
+              <h5>
+                আপডেট:{" "}
+                {new Intl.DateTimeFormat("bn-BD", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  weekday: "long",
+                  hour: "numeric",
+                  minute: "numeric",
+                  second: "numeric",
+                  hour12: true,
+                })
+                  .format(new Date(news.updatedAt))
+                  .replace("AM", "এএম")
+                  .replace("PM", "পিএম")}
+              </h5>
+            ) : null}
 
           </div>
         </div>
       </div>
       <SocialShare newsId={news._id} />
-      <div className="relative w-full overflow-hidden aspect-[3/2] mt-5">
+      <div className="relative w-full overflow-hidden  mt-5">
         {news?.videoUrl ? (
           <div className="relative w-full h-full">
             <ReactPlayer
@@ -95,7 +92,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ news }: NewsCardProps) => {
             />
           </div>
         ) : (
-          <Card className="overflow-hidden">
+          <Card className="">
             <CardContent className="p-0">
               {news?.images?.length > 0 ? (
                 <figure className="relative w-full">
@@ -120,25 +117,25 @@ const NewsCard: React.FC<NewsCardProps> = ({ news }: NewsCardProps) => {
               )}
             </CardContent>
             {news?.imageTagline && (
-              <CardFooter className="px-4 py-3 text-sm text-muted-foreground flex justify-center">
+              <div className="px-4 py-3 text-sm flex justify-center z-20">
                 <p className="font-bengali text-center">
                   {news.imageTagline}{" "}
-                  <span className="dark:text-white text-gray-500">
+                  {/* <span className="dark:text-white text-gray-500">
                     ছবি : ডেইলিটাইমস২৪
-                  </span>
+                  </span> */}
                 </p>
-              </CardFooter>
+              </div>
             )}
           </Card>
         )}
       </div>
-      <header className="mt-4">
+      <header className="mt-8">
         <p className="text-sm dark:text-gray-300 text-gray-500">
           {formatDate(news?.postDate)}
         </p>
       </header>
       <div className="mt-2">
-        <p className="mt-2 dark:text-white text-gray-700">
+        <p className="px-1 mt-2 dark:text-white text-gray-700">
           {news?.description ? parse(news.description) : ""}
         </p>
         {/* <p className="mt-1 text-sm dark:text-gray-300 text-gray-500">

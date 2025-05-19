@@ -42,11 +42,11 @@ const LastNews = () => {
                 className=" "
               >
                 <h3
-                  className="px-2  text-lg font-semibold line-clamp-1 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:dark:text-blue-600 transition-colors"
+                  className="px-2 text-lg font-semibold line-clamp-1 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:dark:text-blue-600 transition-colors"
                 >
                   {news?.newsTitle}
                 </h3>
-                <p className="px-2  text-xs md:text-[17px] line-clamp-3 text-gray-500">
+                <p className="px-2  text-[15px] md:text-[17px] line-clamp-3 text-gray-500">
                   {news?.description
                     ? parse(truncateText(news.description, 250))
                     : ""}

@@ -88,7 +88,7 @@ const NewsCard = () => {
                   />
                 )}
                
-                <div className=" p-4 w-full">
+                <div className="p-2 md:p-4 w-full">
                   <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold  group-hover:text-blue-600 transition-colors">
                     {news.newsTitle}
                   </h1>
