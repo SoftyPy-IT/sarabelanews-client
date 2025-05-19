@@ -43,7 +43,7 @@ const LastNews = () => {
               >
                 <h3
                   className="px-2  text-sm md:text-lg font-semibold 
-                  line-clamp-1 text-gray-700 hover:text-blue-600 transition-colors"
+                  line-clamp-1 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:dark:text-blue-600 transition-colors"
                 >
                   {news?.newsTitle}
                 </h3>

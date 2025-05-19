@@ -22,17 +22,13 @@ const NewsCard = () => {
   }
 
 
- const sortNewsData3 = sortByDate(newsData, "postDate");
+  const sortNewsData3 = sortByDate(newsData, "postDate");
 
   const newsLocation = newsData.filter(news => news.newsLocation === "Lead-1");
   const sortNewsData = sortByDate(newsLocation, "postDate");
 
   const newsLocation2 = newsData.filter(news => news.newsLocation === "Lead-2");
   const sortedNews = sortByDate(newsLocation2, "postDate");
-
-
-
-
 
 
   return (
@@ -51,7 +47,7 @@ const NewsCard = () => {
               >
 
                 <div className="">
-                  <h2 className="text-[20px] font-semibold text-justify text-gray-700 hover:text-blue-600 transition-colors leading-[1]">
+                  <h2 className="text-[20px] font-semibold text-justify text-gray-700 dark:text-gray-200 hover:text-blue-600 transition-colors leading-[1]">
                     {news.newsTitle}
                   </h2>
                 </div>
@@ -71,7 +67,7 @@ const NewsCard = () => {
                     )}
                   </div>
                 </div>
-                
+
               </Link>
             )
           })}
@@ -87,24 +83,11 @@ const NewsCard = () => {
                   <Image
                     src={news?.images[0]}
                     alt={news?.newsTitle || "News Image"}
-                    // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw"
                     width={700}
                     height={100}
-                  // className=" w-full h-full "
                   />
                 )}
-
-                {/* <div className="relative aspect-[6/5] overflow-hidden">
-                  <div className="relative w-full h-full transform transition-transform duration-500 group-hover:scale-105">
-
-                    
-                  </div> */}
-                {/* <div className=" p-4 bg-gradient-to-t from-black to-transparent w-full">
-                    <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white group-hover:text-yellow-400 transition-colors">
-                      {news.newsTitle}
-                    </h1>
-                  </div> */}
-                {/* </div> */}
+               
                 <div className=" p-4 w-full">
                   <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold  group-hover:text-blue-600 transition-colors">
                     {news.newsTitle}

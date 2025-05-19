@@ -36,7 +36,7 @@ const LeadNewsCard = ({ newsData }: NewsProps) => {
             </div>
           </div>
           <div className="w-full ps-2 lg:pt-2">
-            <h2 className="hidden md:block text-[20px] font-semibold  text-gray-700 hover:text-blue-600 transition-colors">
+            <h2 className="hidden md:block text-[20px] font-semibold  text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:dark:text-blue-600 transition-colors">
               {news.newsTitle }
             </h2>
             <p className="hidden md:block text-[17px] mt-2 text-gray-500">  {news?.description ? parse(truncateText(news.description, 120)) : ""}</p>

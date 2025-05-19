@@ -51,7 +51,7 @@ const EntertainmentNewsCard = () => {
                   )}
                 </div>
                 <div className="absolute bottom-0 p-4 bg-gradient-to-t from-black to-transparent w-full">
-                  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white group-hover:text-yellow-400 transition-colors">
+                  <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-white group-hover:text-yellow-400 transition-colors">
                     {news.newsTitle}
                   </h1>
                 </div>
@@ -80,7 +80,7 @@ const EntertainmentNewsCard = () => {
               </div>
               <div className="flex-1 px-2 flex flex-col justify-between">
                 <Link href={`/entertainment/${news._id}`}>
-                  <h2 className="text-sm font-bold mb-2 hover:text-blue-600">
+                  <h2 className="text-base font-bold mb-2 hover:text-blue-600 ">
                     {news?.newsTitle}
                   </h2>
                 </Link>
