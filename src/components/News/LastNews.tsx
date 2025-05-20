@@ -30,8 +30,6 @@ const LastNews = () => {
     >
       <ul className="divide-y divide-gray-200">
         {sortNewsData?.map((news) => {
-
-
           return (
             <li
               key={news?._id}

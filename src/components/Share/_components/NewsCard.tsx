@@ -36,7 +36,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ news }: NewsCardProps) => {
         </div>
       </div>
 
-      <h2 className="text-2xl md:text-3xl font-semibold dark:text-white text-gray-800 mt-2 pl-1">
+      <h2 className="text-[27px] md:text-3xl font-semibold dark:text-white text-gray-800 mt-2 pl-1 leading-[1]">
         {news?.newsTitle}
       </h2>
 
@@ -135,7 +135,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ news }: NewsCardProps) => {
         </p>
       </header>
       <div className="mt-2">
-        <p className="px-1 mt-2 dark:text-white text-gray-700">
+        <p className="text-[18px] px-1 mt-2 dark:text-white text-gray-700">
           {news?.description ? parse(news.description) : ""}
         </p>
         {/* <p className="mt-1 text-sm dark:text-gray-300 text-gray-500">
