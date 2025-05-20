@@ -31,7 +31,7 @@ const TrendingCard = () => {
             <Image
               src={news.images[0]}
               alt={news.newsTitle || "News Image"}
-              className="h-[100px] md:h-[130px] w-[140px] md:w-full"
+              className="h-[90px] md:h-[130px] w-[120px] md:w-full"
               width={200}
               height={100}
               
@@ -46,10 +46,10 @@ const TrendingCard = () => {
           </div>
 
           <div className="md:hidden ms-3">
-            <h3 className="md:text-lg font-semibold hover:text-blue-500">
+            <h3 className="text-[19px] md:text-[20px] font-semibold hover:text-blue-500">
               <Link href={`/${news?.category?.slug ?? 'national'}/${news._id}`}>{news?.newsTitle? parse(truncateText(news.newsTitle, 50)) : ""}</Link>
             </h3>
-            <p className="text-sm mt-2">  {news?.description ? parse(truncateText(news.description, 50)) : ""}</p>
+            <p className="text-base mt-2 text-gray-500">  {news?.description ? parse(truncateText(news.description, 50)) : ""}</p>
           </div>
         </div>
       ))}

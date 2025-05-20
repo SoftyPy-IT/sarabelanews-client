@@ -62,7 +62,7 @@ const NewsCard = () => {
                   {news.newsTitle}
                 </Link>
               </h2>
-              <p className="text-sm mb-2">
+              <p className="text-lg mb-2 text-gray-500">
                 {news?.description ? parse(truncateText(news.description, 300)) : ""}
               </p>
               <div className="flex justify-between text-xs">
@@ -94,7 +94,7 @@ const NewsCard = () => {
                 )}
               </div>
               <div className="flex-1 ps-2 lg:pt-4 flex flex-col justify-between">
-                <h3 className="text-lg font-semibold mb-2 hover:text-blue-600">
+                <h3 className="text-lg text-gray-600 font-semibold mb-2 hover:text-blue-600">
                   <Link href={`/international/${news._id}`}>
                     {news.newsTitle}
                   </Link>

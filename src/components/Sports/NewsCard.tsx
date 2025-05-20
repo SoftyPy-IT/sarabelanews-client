@@ -33,7 +33,7 @@ const NewsCard = ({ newsData }: NewsProps) => {
                     )}
                   </div>
                   <div className="absolute bottom-0 p-4 bg-gradient-to-t from-black to-transparent w-full">
-                    <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white group-hover:text-yellow-400 transition-colors">
+                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white group-hover:text-yellow-400 transition-colors leading-[1]">
                       {news.newsTitle}
                     </h1>
                   </div>
@@ -71,10 +71,10 @@ const NewsCard = ({ newsData }: NewsProps) => {
                   {/* Content container */}
                   <div className="w-2/3 sm:w-1/2 lg:w-full px-2">
                     <div className="space-y-2">
-                      <h2 className="text-base sm:text-lg font-bold group-hover:text-blue-600 transition-colors line-clamp-2">
+                      <h2 className="text-lg font-bold group-hover:text-blue-600 transition-colors line-clamp-2">
                         {news.newsTitle}
                       </h2>
-                      <p className="text-sm  line-clamp-2 sm:line-clamp-3 lg:line-clamp-4">
+                      <p className="text-base text-gray-500 line-clamp-2 sm:line-clamp-3 lg:line-clamp-4">
                         {parse(truncateText(news?.description, 100))}
                       </p>
 

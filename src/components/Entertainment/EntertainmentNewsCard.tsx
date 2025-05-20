@@ -80,7 +80,7 @@ const EntertainmentNewsCard = () => {
               </div>
               <div className="flex-1 px-2 flex flex-col justify-between">
                 <Link href={`/entertainment/${news._id}`}>
-                  <h2 className="text-base font-bold mb-2 hover:text-blue-600 ">
+                  <h2 className="text-lg text-gray-700 font-bold mb-2 hover:text-blue-600 ">
                     {news?.newsTitle}
                   </h2>
                 </Link>

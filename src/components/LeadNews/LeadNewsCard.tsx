@@ -42,10 +42,10 @@ const LeadNewsCard = ({ newsData }: NewsProps) => {
             <p className="hidden md:block text-[17px] mt-2 text-gray-500">  {news?.description ? parse(truncateText(news.description, 120)) : ""}</p>
             
             
-            <h2 className="md:hidden font-bold  text-gray-700 dark:text-gray-200 transition-colors">
+            <h2 className="md:hidden text-[18px] md:text-[20px] font-bold  text-gray-700 dark:text-gray-200 transition-colors">
               {news?.newsTitle ? parse(truncateText(news.newsTitle, 35)) : ""}
             </h2>
-            <p className="md:hidden text-[15px] mt-2 text-gray-500">  {news?.description ? parse(truncateText(news.description, 85)) : ""}</p>
+            <p className="md:hidden text-[16px] mt-2 text-gray-500">  {news?.description ? parse(truncateText(news.description, 85)) : ""}</p>
           </div>
         </Link>
       ))}
