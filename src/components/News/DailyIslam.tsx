@@ -23,8 +23,7 @@ const DailyIslam = ({ tagName }: tagsProps) => {
 
   return (
     <div
-      className="w-full max-h-[200px] lg:max-h-[700px] px-2 md:px-4 overflow-y-auto 
-        [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      className="w-full max-h-[200px] lg:max-h-[700px] px-2 md:px-4 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
     >
       <ul className="divide-y divide-gray-200">
         {sortNewsData?.map((news) => {
@@ -39,8 +38,7 @@ const DailyIslam = ({ tagName }: tagsProps) => {
                 className="block space-y-1"
               >
                 <h3
-                  className="text-sm md:text-base lg:text-lg font-semibold
-              line-clamp-1 hover:text-blue-600 transition-colors"
+                  className="text-sm md:text-base lg:text-lg font-semibold line-clamp-1 hover:text-blue-600 transition-colors"
                 >
                   {news?.newsTitle}
                 </h3>
@@ -52,8 +50,9 @@ const DailyIslam = ({ tagName }: tagsProps) => {
                 <div className="flex justify-between items-center text-xs md:text-sm">
                   <span>{formatDate(news?.postDate)}</span>
                   <span className="text-blue-500 hover:text-blue-700">
-                    আরও পড়ুন
+                    আরও পড়ুন 
                   </span>
+                  {/* ro porun */}
                 </div>
               </Link>
             </li>
