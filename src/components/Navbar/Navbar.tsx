@@ -73,6 +73,10 @@ const Navbar: React.FC = () => {
   const dispatch = useDispatch()
   const mode = useSelector((state: any) => state.themeToggle.mode)
   const { categoryData, loading, error } = useCategoryData({})
+
+
+
+
   const sortNewsData = sortByDate(categoryData, 'updatedAt')
   React.useEffect(() => {
     setIsOpen(false)
@@ -92,7 +96,7 @@ const Navbar: React.FC = () => {
     ]
 
     // Add first 8 categories directly to the main nav
-    const mainCategories = categories.slice(0, 7)
+    const mainCategories = categories.slice(0, 13)
     mainCategories.forEach((category) => {
       if (category.slug) {
         items.push({

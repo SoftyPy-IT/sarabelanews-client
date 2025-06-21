@@ -41,10 +41,8 @@ const LogIn = () => {
       if (accessToken) {
         setCookie("sarabela-news", accessToken, { expires: 7 });
         localStorage.setItem("sarabela-news", accessToken);
-
         if (res.data.success) {
           toast.success("Login successful!");
-          // Redirect to the return URL after successful login
           router.push(returnUrl);
         } else {
           toast.error(res.data.message || "Login failed!");

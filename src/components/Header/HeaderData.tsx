@@ -8,9 +8,9 @@ import Loading from '../Share/_components/Loading';
 
 const HeaderData = () => {
     const { newsData, loading, error } = useSpecificNewsData({})
-    // if (loading) {
-    //     return <Loading />
-    // }
+    if (loading) {
+        return <Loading/>
+    }
     if (error) {
         return <h3>Oops! data not found.</h3>
     }

@@ -35,7 +35,6 @@ export const useSpecificNewsData = ({
     const fetchNewsData = async () => {
       setLoading(true)
       setError(null)
-
       try {
         const url = new URL(`${process.env.NEXT_PUBLIC_BASE_API_URL}/news`)
         const params = new URLSearchParams({ fields: newsFields })

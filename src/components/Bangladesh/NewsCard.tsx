@@ -13,9 +13,8 @@ import { formatDate } from "@/util/formateDate";
 import Loading from "../Share/_components/Loading";
 const NewsCard = () => {
 
-  const { newsData, loading, error } = useSpecificNewsData({})
 
-  console.log("Raw news data:", newsData);
+  const { newsData, loading, error } = useSpecificNewsData({limit:'10'})
 
   if (loading) {
     return <Loading />;
