@@ -156,41 +156,42 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h2 className="font-bold text-xl">অন্য বিভাগ</h2>
+            <h2 className="font-bold text-xl">অন্যান্য</h2>
             <div className="flex justify-center lg:justify-start">
-            <hr className="my-4  w-[100px] lg:w-[150px]"/>
+              <hr className="my-4  w-[100px] lg:w-[150px]" />
             </div>
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/education"
+                  href="/about-us"
                   className="hover:text-red-500 transition-colors duration-300"
                 >
-                  শিক্ষা
+                  আমাদের সম্পর্কে
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/sport"
+                  href="/contact-us"
                   className="hover:text-red-500 transition-colors duration-300"
                 >
-                  খেলাধুলা
+                  যোগাযোগ
+
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/entertainment"
+                  href="/terms-condition"
                   className="hover:text-red-500 transition-colors duration-300"
                 >
-                  বিনোদন
+                  শর্তাবলি ও নীতিমালা
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/religion"
+                  href="/privacy-policy"
                   className="hover:text-red-500 transition-colors duration-300"
                 >
-                  ধর্ম
+                  গোপনীয়তা নীতি
                 </Link>
               </li>
             </ul>
@@ -198,7 +199,7 @@ const Footer = () => {
           <div>
             <h2 className="font-bold  text-xl">যোগাযোগ</h2>
             <div className="flex justify-center lg:justify-start">
-            <hr className="my-4  w-[100px] lg:w-[150px]"/>
+              <hr className="my-4  w-[100px] lg:w-[150px]" />
             </div>
             <ul className="space-y-2">
               <li className="text-gray-200">

@@ -34,6 +34,7 @@ export type TNews = {
   metaKeywords: string[];
   metaDescription: string;
   updatedAt: string;
+  createdAt: string;
   comments: {
     _id: string;
     user: {

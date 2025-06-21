@@ -13,8 +13,6 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Facebook, Twitter, Linkedin, Youtube, Search, UserRound, Menu, X, Sun, Moon } from "lucide-react"
 import Image from "next/image"
-
-
 import { usePathname } from "next/navigation"
 import { useDispatch, useSelector } from "react-redux"
 import { toggleDarkMode } from "@/lib/themeSlice"
@@ -74,10 +72,7 @@ const Navbar: React.FC = () => {
   const mode = useSelector((state: any) => state.themeToggle.mode)
   const { categoryData, loading, error } = useCategoryData({})
 
-
-
-
-  const sortNewsData = sortByDate(categoryData, 'updatedAt')
+ const sortNewsData = sortByDate(categoryData, 'slug')
   React.useEffect(() => {
     setIsOpen(false)
   }, [pathname])
@@ -127,62 +122,7 @@ const Navbar: React.FC = () => {
 
   return (
     <div ref={navRef} className="dark:text-black  border-b shadow-sm z-50 bg-white dark:bg-gray-400">
-      <div className="lg:hidden">
-        <div className="border-b border-gray-200 px-4 ">
-          <div className="flex items-center content-center justify-between h-16">
-            <Image
-              // src={logoDark || "/placeholder.svg"}
-              src={mode ? logoDark : logoLight || "/placeholder.svg"}
-              alt="Daily Times 24"
-              width={150}
-              height={0}
-              className="w-[150px] "
-            />
-            <div className="flex items-center gap-2">
-              <Link href="/search">
-                <button className="p-2 rounded-full bg-gray-200 dark:bg-gray-200 hover:bg-red-400 transition-colors">
-                  <Search size={15} />
-                </button>
-              </Link>
-              |
-              <Link href="/login">
-                <button className="p-2 rounded-full bg-gray-200 dark:bg-gray-200 hover:bg-red-400 transition-colors">
-                  <UserRound size={15} />
-                </button>
-              </Link>
-              |
-              <button
-                onClick={() => dispatch(toggleDarkMode())}
-                className="p-2 rounded-full bg-gray-200 dark:bg-gray-200"
-              >
-                {mode ? <Sun size={15} className="text-yellow-400" /> : <Moon size={15} className="text-blue-400" />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="pr-4 py-2 shadow-lg z-50 border-b bg-white dark:bg-gray-400">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 overflow-auto no-scrollbar font-bold ">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`whitespace-nowrap px-1 py-1 text-base ${pathname === item.href ? "text-red-500 font-medium" : ""
-                    }`}
-                >
-                  {item.icon ? item.icon : item.label}
-                </Link>
-              ))}
-            </div>
-
-            <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none ml-2">
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
+      
       {/* Desktop Navigation */}
       <div className="hidden lg:block max-w-7xl mx-auto px-4 py-[10px] font-bold bg-white dark:bg-gray-400">
         <div className="flex justify-between items-center">
@@ -254,6 +194,62 @@ const Navbar: React.FC = () => {
                 {mode ? <Sun size={15} className="text-yellow-400" /> : <Moon size={15} className="text-blue-400" />}
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="lg:hidden">
+        <div className="border-b border-gray-200 px-4 ">
+          <div className="flex items-center content-center justify-between h-16">
+            <Image
+              // src={logoDark || "/placeholder.svg"}
+              src={mode ? logoDark : logoLight || "/placeholder.svg"}
+              alt="Daily Times 24"
+              width={150}
+              height={0}
+              className="w-[150px] "
+            />
+            <div className="flex items-center gap-2">
+              <Link href="/search">
+                <button className="p-2 rounded-full bg-gray-200 dark:bg-gray-200 hover:bg-red-400 transition-colors">
+                  <Search size={15} />
+                </button>
+              </Link>
+              |
+              <Link href="/login">
+                <button className="p-2 rounded-full bg-gray-200 dark:bg-gray-200 hover:bg-red-400 transition-colors">
+                  <UserRound size={15} />
+                </button>
+              </Link>
+              |
+              <button
+                onClick={() => dispatch(toggleDarkMode())}
+                className="p-2 rounded-full bg-gray-200 dark:bg-gray-200"
+              >
+                {mode ? <Sun size={15} className="text-yellow-400" /> : <Moon size={15} className="text-blue-400" />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="pr-4 py-2 shadow-lg z-50 border-b bg-white dark:bg-gray-400">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 overflow-auto no-scrollbar font-bold ">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`whitespace-nowrap px-1 py-1 text-base ${pathname === item.href ? "text-red-500 font-medium" : ""
+                    }`}
+                >
+                  {item.icon ? item.icon : item.label}
+                </Link>
+              ))}
+            </div>
+
+            <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none ml-2">
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </div>
