@@ -52,7 +52,7 @@ const DailyIslam = ({ tagName }: tagsProps) => {
                   <span className="text-blue-500 hover:text-blue-700">
                     আরও পড়ুন 
                   </span>
-                  {/* ro porun */}
+                  {/* r o porun */} 
                 </div>
               </Link>
             </li>
