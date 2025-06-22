@@ -24,6 +24,18 @@ export const getCategory = (basePath: string = "national"): string => {
       return "ভ্রমণ ও পর্যটন";
     case "/sports":
       return "খেলাধুলা";
+    case "/lifestyle":
+      return "লাইফ স্টাইল";
+    case "/women":
+      return "নারী";
+    case "/art-literature":
+      return "শিল্প ও সাহিত্য";
+    case "/today-snewspaper":
+      return "আজকের পত্রিকা";
+    case "/sub-editorial":
+      return "উপসম্পাদকীয়";
+    case "/latest":
+      return "সর্বশেষ";
     default:
       return "national";
   }

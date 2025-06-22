@@ -9,6 +9,7 @@ interface UseSpecificCategoryDataProps {
 
 }
 
+
 export const useCategoryData = ({ slug, limit, }: UseSpecificCategoryDataProps) => {
     const [categoryData, setCategoryData] = useState<TNews[]>([]);
     const [loading, setLoading] = useState(true);
