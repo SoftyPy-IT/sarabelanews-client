@@ -22,6 +22,7 @@ import { useCategoryData } from "@/hooks/useCategoryData"
 import { sortByDate } from "@/util/sort"
 import logoLight from '../../../public/asset/logo/logo2.png'
 import logoDark from '../../../public/asset/logo/logo2.svg'
+import { useMemo } from 'react';
 
 interface SocialLink {
   id: string
@@ -70,19 +71,27 @@ const Navbar: React.FC = () => {
   const pathname = usePathname()
   const dispatch = useDispatch()
   const mode = useSelector((state: any) => state.themeToggle.mode)
-  const { categoryData, loading, error } = useCategoryData({})
 
- const sortNewsData = sortByDate(categoryData, 'slug')
+  const { categoryData, loading, error } = useCategoryData({});
+  console.log('category data this ', categoryData);
+
+  const sortNewsData = useMemo(() => {
+    if (!Array.isArray(categoryData)) return [];
+    return [...categoryData]
+      .filter(item => item.updatedAt)
+      .sort((a, b) => {
+        const dateA = new Date(a.updatedAt).getTime();
+        const dateB = new Date(b.updatedAt).getTime();
+        return dateB - dateA; // Changed to descending order (newest first)
+      });
+  }, [categoryData]);
+
   React.useEffect(() => {
     setIsOpen(false)
   }, [pathname])
 
-  
-
   const generateNavItems = (categories: any[]): NavItem[] => {
     if (!categories || categories.length === 0) return []
-
-    // Home item is always first
     const items: NavItem[] = [
       {
         href: "/",
@@ -90,8 +99,7 @@ const Navbar: React.FC = () => {
       },
     ]
 
-    // Add first 8 categories directly to the main nav
-    const mainCategories = categories.slice(0, 13)
+    const mainCategories = categories.slice(0, 9)
     mainCategories.forEach((category) => {
       if (category.slug) {
         items.push({
@@ -101,8 +109,8 @@ const Navbar: React.FC = () => {
       }
     })
 
-    // Add remaining categories to the "বিবিধ" (misc) dropdown
-    const remainingCategories = categories.slice(7).filter((cat) => cat.slug)
+
+    const remainingCategories = categories.slice(9).filter((cat) => cat.slug) 
     if (remainingCategories.length > 0) {
       items.push({
         href: "/misc",
@@ -116,13 +124,14 @@ const Navbar: React.FC = () => {
 
     return items
   }
+  
   const navItems: NavItem[] = React.useMemo(() => {
     return generateNavItems(sortNewsData || [])
-  }, [categoryData])
+  }, [sortNewsData]) 
 
   return (
     <div ref={navRef} className="dark:text-black  border-b shadow-sm z-50 bg-white dark:bg-gray-400">
-      
+
       {/* Desktop Navigation */}
       <div className="hidden lg:block max-w-7xl mx-auto px-4 py-[10px] font-bold bg-white dark:bg-gray-400">
         <div className="flex justify-between items-center">
@@ -321,4 +330,3 @@ const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(({ title, hr
 ListItem.displayName = "ListItem"
 
 export default Navbar
-

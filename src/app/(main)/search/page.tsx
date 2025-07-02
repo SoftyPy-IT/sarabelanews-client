@@ -157,6 +157,7 @@ const Page = () => {
       <SearchShowData loading={loading} error={error} newsData={newsData}/>
     </div>
   );
+  
 };
 
 export default Page;

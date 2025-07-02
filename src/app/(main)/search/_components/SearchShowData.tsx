@@ -26,7 +26,7 @@ const SearchShowData = ({ newsData, loading, error }: NewsProps) => {
         {newsData.map((news) => {
          
           return (
-            <Link key={news._id} href={`/${news.category?.slug ?? "national"}/${news.slug ?? "national"}`}>
+            <Link key={news._id} href={`/${news.category?.slug ?? "national"}/${news._id ?? "national"}`}>
               <div className="flex   border border-gray-200 hover:shadow-lg transition-shadow duration-200 rounded">
                 <div className="w-[120px] h-[120px] flex-shrink-0 ">
                   {news.images.slice(0, 1).map((img) => (
