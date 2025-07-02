@@ -72,8 +72,7 @@ const Navbar: React.FC = () => {
   const dispatch = useDispatch()
   const mode = useSelector((state: any) => state.themeToggle.mode)
 
-  const { categoryData, loading, error } = useCategoryData({});
-  console.log('category data this ', categoryData);
+  const { categoryData,} = useCategoryData({});
 
   const sortNewsData = useMemo(() => {
     if (!Array.isArray(categoryData)) return [];
@@ -82,7 +81,7 @@ const Navbar: React.FC = () => {
       .sort((a, b) => {
         const dateA = new Date(a.updatedAt).getTime();
         const dateB = new Date(b.updatedAt).getTime();
-        return dateB - dateA; // Changed to descending order (newest first)
+        return dateB - dateA; 
       });
   }, [categoryData]);
 
