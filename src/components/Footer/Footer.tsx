@@ -380,7 +380,7 @@ export default function Footer() {
           <Link href="/privacy-policy" className="hover:text-red-500 transition-colors duration-300">গোপনীয়তা নীতি</Link>
         </div>
 
-        {/* Bottom Section */}
+
         <div className="py-4 lg:py-5 mt-5 border-t border-gray-800 font-sans mb-5">
           <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
             <p className="mb-4 md:mb-0">
