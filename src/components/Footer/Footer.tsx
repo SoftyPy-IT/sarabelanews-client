@@ -273,9 +273,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../assets/logo/logoblue.png";
-import google from "../../assets/Google-Play.png";
-import apple from "../../assets/appstore.png";
+import logo from "../../../src/assets/logo/logoblue.png";
+import google from "../../../src/assets/Google-Play.png";
+import apple from "../../../src/assets/appstore.png";
 import { FaFacebookF, FaLinkedin, FaXTwitter, FaYoutube } from "react-icons/fa6";
 
 const socialLinks = [
