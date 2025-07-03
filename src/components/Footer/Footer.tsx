@@ -319,7 +319,10 @@ export default function Footer() {
         </div>
 
         {/* Links Section */}
-        <div className="lg:grid lg:grid-cols-6 text-center lg:text-left text-[19px] px-4">
+        <div className="text-center lg:text-left text-[19px] px-4 py-3">
+          <p>সারা বাংলাদেশ ও বিশ্বের সকল খবর, ব্রেকিং নিউজ, সরাসরি লাইভ নিউজ, রাজনীতি, খেলাধুলা, বাণিজ্য ও বিনোদনসহ সকল সংবাদ আগে পড়তে ক্লিক করুন সারাবেলা নিউজ ২৪ ডট কম</p>
+        </div>
+        {/* <div className="lg:grid lg:grid-cols-6 text-center lg:text-left text-[19px] px-4">
           <Link href="#" className="mr-[16px] py-2 hover:text-red-500 transition-colors duration-300"> সর্বশেষ </Link>
           <Link href="/national" className="mr-[16px] py-2 hover:text-red-500 transition-colors duration-300 ">জাতীয়</Link>
           <Link href="/politics" className="mr-[16px] py-2 hover:text-red-500 transition-colors duration-300 "> রাজনীতি</Link>
@@ -330,8 +333,8 @@ export default function Footer() {
           <div className="lg:hidden py-[4px]" />
           <Link href="/economy" className="mr-[16px] py-2 hover:text-red-500 transition-colors duration-300">অর্থনীতি</Link>
           <Link href="/tourism" className="mr-[16px] py-2 hover:text-red-500 transition-colors duration-300"> পর্যটন</Link>
-          {/* <Link href="#" className="mr-[16px] py-2">মোবাইল ভাস</Link> */}
-        </div>
+       
+        </div> */}
         <div className="lg:flex justify-between border-t py-2 lg:py-3 text-[17px] px-4 text-center ">
           <p>সম্পাদক: মোঃ আদনান আরিফ</p>
           <p>প্রকাশক:  মোঃ শিহাব মাহমুদ ও আরোহী মীম </p>
